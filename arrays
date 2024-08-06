@@ -1,0 +1,103 @@
+#include<stdio.h>
+int main()
+{
+	int arr[1000];
+	int n,i,si,ei,wish,wish1;
+	printf("enter the array size :");
+	scanf("%d",&n);
+	//store the n number of values in array
+	for(i=0;i<n;i++)
+	{
+		printf("element - %d is : ",i);
+		scanf("%d",&arr[i]);
+	}
+	//print the array's required element
+	printf("1)print the array elements \n ");
+	printf("enter the wish :");
+	scanf("%d",&wish);
+	//print the array
+	if(wish == 1)
+	{
+		do
+		{
+			printf("\n");
+			printf("1)print the all elements in the array\n");
+			printf("2)print the part of elements in the array\n");
+			printf("3)print the reverse array all elements\n");
+			printf("4)print the part of elements in reverse\n");
+			printf("9)QUIT");
+			printf("\nEnter the wish : ");
+			scanf("%d",&wish1);	
+			if(wish1==1)
+			{
+				printf("all the elements in the array is ");
+				printf("[");
+				for(i=0;i<n;i++)
+				{
+					
+					printf("%d ",arr[i]);
+					
+				}
+				printf("]");
+			}
+			else if (wish1==2)
+			{
+				printf("enter the index of start and end value :");
+				printf("\nstart index :");
+				scanf("%d",&si);
+				printf("end index :");
+				scanf("%d",&ei);
+				if(si<n && ei<n)
+				{
+					for(i=si;i<=ei;i++)
+					{
+						printf("\nelement of index %d is %d ",i,arr[i]);
+					}
+				}
+				else
+				{
+					printf("!!! invalid index !!!");
+				}
+			}
+			else if (wish1==9)
+			{
+				printf("---This session quit---");
+			}
+			else if(wish1==3)
+			{
+				printf("all the elements in the reverse array is ");
+				for(i=n-1;i>=0;i--)
+				{
+					printf("%d  ",arr[i]);
+				}
+				
+			}
+			else if(wish1==4)
+			{
+				printf("enter the index of start and end value :");
+				printf("\nstart index :");
+				scanf("%d",&si);
+				printf("end index :");
+				scanf("%d",&ei);
+				if(si<n && ei<n)
+				{
+					for(i=ei;i>=si;i--)
+					{
+						printf("\nelement of index %d is %d ",i,arr[i]);
+					}
+				}
+				else
+				{
+					printf("!!! invalid index !!!");
+				}
+				
+			}
+			else
+			{
+				printf("!!!invalid wish !!!");
+			}
+		}while(wish1!=9);
+	}
+	
+	
+}
