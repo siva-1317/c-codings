@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+int main()
+{
+    int number, hundreds, tens, ones;
+    char *ones_arr[] = {"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+    char *teens_arr[] = {"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
+    char *tens_arr[] = {"", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
+
+    printf("Enter a three-digit number (100-999): ");
+    scanf("%d", &number);
+
+    // Check for valid input (three-digit number between 100 and 999)
+    if (number < 100 || number > 999) 
+	{
+        printf("Invalid input. Please enter a three-digit number between 100 and 999.\n");
+        return 1;
+    }
+
+    // Separate hundreds, tens, and ones digits
+    hundreds = number / 100;
+    //printf("%d\n",hundreds);
+    number %= 100;
+    //printf("%d\n",number);
+    tens = number / 10;
+    //printf("%d\n",tens);
+    ones = number % 10;
+    //printf("%d\n",ones);
+
+    // Print hundreds place (if not zero)
+    if (hundreds > 0) {
+        printf("%s hundred", ones_arr[hundreds]);
+    }
+
+    // Print tens and ones place (considering special cases for teens)
+    if (tens > 0) {
+        if (tens == 1 && ones > 0) {
+            printf(" %s", teens_arr[ones]);
+        } else {
+            printf(" %s", tens_arr[tens]);
+            if (ones > 0) 
+			{
+                printf("-%s", ones_arr[ones]);
+            }
+        }
+    } 
+	else if (ones > 0)
+	{
+        printf(" %s", ones_arr[ones]);
+    }
+
+    printf("\n");
+
+    return 0;
+}
