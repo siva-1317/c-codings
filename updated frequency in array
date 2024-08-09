@@ -1,0 +1,44 @@
+#include<stdio.h>
+int main()
+{
+    int n,j,i,count,as,s=0,sum=0,coun=0;
+    printf("enter the size of array :");
+    scanf("%d ",&n);
+    int sd[n];
+    int ds[n];
+    int sds[n];
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&sd[i]);
+    }
+    for(i=0;i<n;i++)
+    {
+        count=1;
+        as=sd[i];
+        for(j=i+1;j<n;j++)
+        {
+            if(as==sd[j])
+            {
+                count++;
+                sd[j]=-1;
+            }
+        }
+        if(sd[i]!=-1)
+        {
+            ds[s]=count;
+            sds[s]=sd[i];
+            s++;
+        }
+    }
+    for(i=0;i<s;i++)
+    {
+        if(ds[i]>1)
+        {
+            printf("%dis occurs %d times \n",sds[i],ds[i]);
+            sum+=ds[i];
+            coun++;
+        }
+    }
+    printf("the total sum of duplicate is : %d \n",sum);
+    printf("the total count of duplicate is : %d \n",coun);
+}
